@@ -80,8 +80,7 @@ target/
 .idea/
 
 # Database
-API/db.sqlite3
-website/db.sqlite3
+db.sqlite3
 
 # Stress Test Verification File
 loader.txt
