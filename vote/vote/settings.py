@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'qa',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -69,6 +70,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'vote.wsgi.application'
+ASGI_APPLICATION = 'vote.routing.application'
 
 
 # Database
