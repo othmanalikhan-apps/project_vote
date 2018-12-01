@@ -1,7 +1,6 @@
 from django.db import models
 
 
-# For the Q&A session; PDPs are going to be able to submit questions and vote on already submitted questions
 class Question(models.Model):
     """
     Model for PDPs to submit their questions.

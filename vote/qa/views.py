@@ -38,29 +38,35 @@ def room(request, room_name):
 
 ########################################
 
+@login_required
+def questions(request):
+    template = loader.get_template("qa/questions.html")
+    return HttpResponse(template.render())
 
-# @login_required
-# def QA(request):
-#     template = loader.get_template("webapp/q&a.html")
-#     if request.method == 'GET':
-#         r = requests.get(BACKEND_URL + "questions/")
-#         # I am trying to store the json in a string variable
-#         s = json.dumps(r.json(), indent=4)
-#         list_of_questions = r.json()
-#         for question in list_of_questions:
-#             question["ajaxId"] = "ajaxId" + str(question["id"])
-#
-#         # Filtering inappropriate questions
-#         list_of_appropriate_questions = [question for question in list_of_questions if question["isAppropriate"]]
-#         list_of_appropriate_questions = sorted(list_of_appropriate_questions, key=lambda k: k['votes'], reverse=True)
-#
-#         context = {
-#             'questions': list_of_appropriate_questions,
-#         }
-#
-#         return HttpResponse(template.render(context, request))
-#     return HttpResponseRedirect('QA')
+    # if request.method == 'GET':
+    #     r = requests.get(BACKEND_URL + "questions/")
+    #     # I am trying to store the json in a string variable
+    #     s = json.dumps(r.json(), indent=4)
+    #     list_of_questions = r.json()
+    #     for question in list_of_questions:
+    #         question["ajaxId"] = "ajaxId" + str(question["id"])
+    #
+    #     # Filtering inappropriate questions
+    #     list_of_appropriate_questions = [question for question in list_of_questions if question["isAppropriate"]]
+    #     list_of_appropriate_questions = sorted(list_of_appropriate_questions, key=lambda k: k['votes'], reverse=True)
+    #
+    #     context = {
+    #         'questions': list_of_appropriate_questions,
+    #     }
+    #
+    #     return HttpResponse(template.render(context, request))
+    # return HttpResponseRedirect('QA')
 
+
+@login_required
+def about(request):
+    template = loader.get_template("qa/about.html")
+    return HttpResponse(template.render())
 
 
 # def create_question(request):

@@ -56,7 +56,9 @@ ROOT_URLCONF = 'vote.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            "/qa/templates/qa"
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
