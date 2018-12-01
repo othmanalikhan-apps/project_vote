@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Town Hall</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../../static/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Chakra+Petch|Poiret+One|Rajdhani|Raleway|Teko" rel="stylesheet">
+    <script src="../../static/js/navbar.js"></script>
+</head>
+
+<body id="splash_body">
+        <h1 class="splash_title">2018<br>Town Hall Meeting!<br></h1>
+        <form action="" id="splash_form" method="POST">
+            {% csrf_token %}
+
+            <label for="sessionID"><span>Enter session ID:</span></label>
+            <input type="text" name="sessionID" class="question" id="sessionID" required autocomplete="off"/>
+            <input type="submit" value="Submit!"/>
+        </form>
+</body>
+
+</html>
