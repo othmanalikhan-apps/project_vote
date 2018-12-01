@@ -1,96 +1,67 @@
-<!DOCTYPE html>
-<html class="no-js" lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Hello World!</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html>
+<html lang="en">
 
-    <!-- External link (relative) to your main stylesheet -->
-    <link rel="stylesheet" href="../../static/css/styles.css">
+{% include './components/_head.html' %}
 
-    <!-- External link to Google fonts to be used on this page -->
-    <link href="https://fonts.googleapis.com/css?family=Chakra+Petch|Poiret+One|Rajdhani|Raleway|Teko" rel="stylesheet">
-
-    <!-- External link (relative) to your javascript file -->
-    <script src="../../static/js/navbar.js"></script>
-    <script src="../../static/js/qa_voting.js"></script>
-    <script src="../../static/js/qa_new_question.js"></script>
-</head>
 
 <body onload="setInterval(updateVotes, 5000)">
-{% include './components/navbar.html' %}
-{% include './components/topbar_qa.html' %}
-
-<!--Main content of the page-->
-<div id="main" onclick="closeNav()">
-
-    <section>
-        <h1 class="subtitle">Q&A Voting</h1>
-        <p>
-            Scroll to the bottom to post a new question. Once posted, your
-            question will be evaluated by our moderators so please wait until
-            it appears!
-        </p>
-        <p>
-            Otherwise, vote for an existing question by selecting the orange
-            button and hitting the vote button.
-        </p>
-    </section>
 
 
-    <form class="form" action="question_voting" method="POST">
-        {% csrf_token %}
-        {% for question in questions %}
-        <div class="inputGroup">
-            <input id={{question.id}} name="checkbox" type="checkbox" value={{question.id}}> 
-            <label for={{question.id}}>{{question.body |linebreaks}}
-                <!-- Tag for the AJAX part -->
-                <p id={{question.ajaxId}} value={{question.ajaxId}}>{{question.votes}}</p>
-            </label>
-            <!-- <label for={{question.id}}>{{question.body |linebreaks}} Votes: {{question.votes |linebreaks}}</p> </label> -->
+<div id="container h-100">
+
+    {% include './components/navbar.html' %}
+
+    <!--Introduction section-->
+    <div class="row justify-content-center text-justify p-5">
+        <div class="col-12">
+            <h1 class="text-center pb-2">Q&A Voting</h1>
+            <p>
+                Scroll to the bottom to post a new question. Once posted, your
+                question will be evaluated by our moderators so please wait until
+                it appears!
+            </p>
+            <p>
+                Otherwise, vote for an existing question by selecting the orange
+                button and hitting the vote button.
+            </p>
         </div>
+    </div>
 
-        {% endfor %}
-        <div style="text-align: center">
-            <button class="submit" type="submit" value="Submit">Vote!</button>
-            <button class="submit" type="submit" value="Submit">Fetch New Questions!</button>
-        </div>
-    </form>
-    <br><br><br>
-
-    <button class="collapsible">Have a question? Post below!</button>
-    <div class="content">
-        <form action="create_question" method="POST">
+    <!--Post a question section-->
+    <div class="row h-100 pl-5 pr-5 pb-4 justify-content-center align-items-center">
+        <form class="col-12" method="POST" action="/new_question">
             {% csrf_token %}
-            <!-- <label for="question">Question: </label>
-            <br> -->
-            <textarea id="finisher" rows="4" cols="50" id="question" type="text" name="body"></textarea>
-            <br>
-            
-            <!--<button type="submit">Upload</button>-->
-            
-            <button class="submit" type="submit" value="Submit">Submit question</button>
+            <div class="form-group">
+                <textarea type="text" class="form-control mb-2" name="body" rows="3" placeholder="My question is that..."></textarea>
+                <input type="submit" class="btn btn-danger w-100" value="Post Question!"/>
+            </div>
         </form>
     </div>
-    <script>
-        var coll = document.getElementsByClassName("collapsible");
-        var i;
-        
-        for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.maxHeight){
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-            } 
-            });
-        }
-        </script>
-    <br><br><br>
+
+    <!--Vote and Get Questions section-->
+    <div class="row pl-5 pr-5 text-center">
+        <div class="col-6">
+            <button type="submit" class="btn btn-danger w-100">Vote</button>
+        </div>
+        <div class="col-6">
+            <button type="submit" class="btn btn-danger w-100">Get Questions</button>
+        </div>
+    </div>
+
+    <!--<form class="form" action="question_voting" method="POST">-->
+        <!--{% csrf_token %}-->
+        <!--{% for question in questions %}-->
+        <!--<div class="inputGroup">-->
+            <!--<input id={{question.id}} name="checkbox" type="checkbox" value={{question.id}}>-->
+            <!--<label for={{question.id}}>{{question.body |linebreaks}}-->
+                <!--&lt;!&ndash; Tag for the AJAX part &ndash;&gt;-->
+                <!--<p id={{question.ajaxId}} value={{question.ajaxId}}>{{question.votes}}</p>-->
+            <!--</label>-->
+            <!--&lt;!&ndash; <label for={{question.id}}>{{question.body |linebreaks}} Votes: {{question.votes |linebreaks}}</p> </label> &ndash;&gt;-->
+        <!--</div>-->
+        <!--{% endfor %}-->
+    <!--</form>-->
+
 </div>
 </body>
 </html>

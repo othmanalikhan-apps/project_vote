@@ -56,3 +56,4 @@ TODO_Regular
 TODO
 ----
 - Add more functionality in admin page 
+- Test bootstrap being blocked internally Aramco LAN

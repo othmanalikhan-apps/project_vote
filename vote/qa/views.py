@@ -1,5 +1,7 @@
 import json
+from django.template import RequestContext
 
+from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
@@ -7,19 +9,26 @@ from django.shortcuts import render
 from django.template import loader
 from django.utils.safestring import mark_safe
 
+from .models import Question
+
 
 def splash(request):
+    if request.method == "GET":
+        return render(request, 'qa/splash.html', {})
+
     if request.method == "POST":
         sessionID = request.POST["sessionID"]
         user = authenticate(username=sessionID, password="defaultuser")
 
         if user and user.is_active:
-            print("REDIRECTING")
             request.session.set_expiry(5*60)
             login(request, user)
-            return HttpResponseRedirect("/questions")
+            template = loader.get_template("qa/questions.html")
 
-    return render(request, 'qa/splash.html', {})
+            # print(request)
+            # print(rd)
+            # return HttpResponse(template.render(request))
+            return render(request, 'qa/questions.html')
 
 
 ########################################
@@ -67,6 +76,24 @@ def questions(request):
 def about(request):
     template = loader.get_template("qa/about.html")
     return HttpResponse(template.render())
+
+
+def new_question(request):
+    print("FSDKLSDKLFSDLKFSDKJ")
+    if request.method == "POST":
+        Question(body=request.POST["body"]).save()
+        # return HttpResponseRedirect("/questions")
+        template = loader.get_template("qa/questions.html")
+        # return HttpResponse(template.render())
+        context = {}
+        return render(request, 'qa/questions.html', context)
+
+    # return render(request, 'qa/splash.html', {})
+
+    # template = loader.get_template("qa/questions.html")
+    # return HttpResponseRedirect("/questions")
+    # return HttpResponse(template.render(), RequestContext(request))
+    # return render(request, "qa/questions.html")
 
 
 # def create_question(request):
