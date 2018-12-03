@@ -23,12 +23,12 @@ def splash(request):
         if user and user.is_active:
             request.session.set_expiry(5*60)
             login(request, user)
-            template = loader.get_template("qa/questions.html")
+            template = loader.get_template("qa/voting.html")
 
             # print(request)
             # print(rd)
             # return HttpResponse(template.render(request))
-            return render(request, 'qa/questions.html')
+            return render(request, 'qa/voting.html')
 
 
 ########################################
@@ -47,10 +47,16 @@ def room(request, room_name):
 
 ########################################
 
-@login_required
-def questions(request):
-    template = loader.get_template("qa/questions.html")
+# @login_required
+def voting(request):
+    template = loader.get_template("qa/voting.html")
     return HttpResponse(template.render())
+
+
+def about(request):
+    template = loader.get_template("qa/about.html")
+    return HttpResponse(template.render())
+
 
 # @login_required
 # def QA(request):
@@ -76,22 +82,22 @@ def questions(request):
 
 
 
-def new_question(request):
-    print("FSDKLSDKLFSDLKFSDKJ")
+def postQuestion(request):
+
     if request.method == "POST":
         Question(body=request.POST["body"]).save()
         # return HttpResponseRedirect("/questions")
-        template = loader.get_template("qa/questions.html")
+        template = loader.get_template("qa/voting.html")
         # return HttpResponse(template.render())
         context = {}
-        return render(request, 'qa/questions.html', context)
+        return render(request, 'qa/voting.html', context)
 
     # return render(request, 'qa/splash.html', {})
 
-    # template = loader.get_template("qa/questions.html")
+    # template = loader.get_template("qa/voting.html")
     # return HttpResponseRedirect("/questions")
     # return HttpResponse(template.render(), RequestContext(request))
-    # return render(request, "qa/questions.html")
+    # return render(request, "qa/voting.html")
 
 
 # def create_question(request):

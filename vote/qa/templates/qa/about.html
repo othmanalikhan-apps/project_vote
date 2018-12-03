@@ -1,29 +1,12 @@
-<!DOCTYPE html>
-<html class="no-js" lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Hello World!</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html>
+<html lang="en">
 
-    <!-- External link (relative) to your main stylesheet -->
-    <link rel="stylesheet" href="../../static/css/styles.css">
-
-    <!-- External link to Google fonts to be used on this page -->
-    <link href="https://fonts.googleapis.com/css?family=Chakra+Petch|Poiret+One|Rajdhani|Raleway|Teko" rel="stylesheet">
-
-    <!-- External link (relative) to your javascript file -->
-    <script src="../../static/js/navbar.js"></script>
-</head>
+{% include './components/_head.html' %}
 
 <body>
-{% include './components/navbar.html' %}
-{% include './components/topbar_about.html' %}
+<div id="container h-100">
 
-<div id="main" onclick="closeNav()">
-
-    <section>
+    <div class="row h-100 justify-content-center align-items-center">
         <h1 class="subtitle">Development</h1>
         <p>
             A good deal of effort has gone into the development of this web
@@ -34,10 +17,8 @@
             In addition, the development of this web application involved the
             use of several lovely technologies that deserve mentioning.
         </p>
-    </section>
 
-    <section>
-        <h1 class="subtitle">Credits </h1>
+        <!--<h1 class="subtitle">Credits </h1>-->
         <p class="credits">
             <b>Authors</b><br>Othman Alikhan<br>Yaqeen AlMahdi<br><br>
 
@@ -57,7 +38,7 @@
 
             <b>Special Thanks</b><br>Omar Alikhan<br><br>
         </p>
-    </section>
+    </div>
 
 </div>
 </body>
