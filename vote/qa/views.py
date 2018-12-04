@@ -1,4 +1,5 @@
 import json
+from builtins import enumerate
 
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
@@ -31,10 +32,17 @@ def splash(request):
 @login_required
 def voting(request):
     if request.method == "GET":
-        approved = Question.objects.filter(isAppropriate=True).order_by("-votes")
-        approved = serializers.serialize("json", approved)
-        approved = [entry["fields"] for entry in json.loads(approved)]
-        approved = approved[:20]
+        _approved = Question.objects.filter(isAppropriate=True).order_by("-votes")
+        _approved = serializers.serialize("json", _approved)
+        _approved = [entry["fields"] for entry in json.loads(_approved)]
+        _approved = _approved[:20]
+
+        approved = []
+        for i, entry in enumerate(_approved, start=1):
+            entry.pop("isAppropriate")
+            entry["num"] = i
+            approved.append(entry)
+
         return render(request, 'qa/voting.html', {"questions": approved})
 
     if request.method == "POST":

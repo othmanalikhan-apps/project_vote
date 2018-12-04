@@ -29,39 +29,54 @@
     <!--Post a question section-->
     <div class="row h-100 pl-5 pr-5 pb-4 justify-content-center align-items-center">
 
+        <!---POST form-->
         <form class="col-12 mb-0" method="POST" action="/voting">
             {% csrf_token %}
 
             <!---For loop needed to consume messages by Django messages framework-->
             {% if messages %}
                 {% for m in messages %}
-                <div class="alert alert-success" role="alert">
-                    <strong>Submitted your question to server successfully!</strong>
-                </div>
+                    <div class="alert alert-success" role="alert">
+                        <strong>Submitted your question to server successfully!</strong>
+                    </div>
                 {% endfor %}
             {% endif %}
 
             <div class="form-group">
-                <textarea type="text" class="form-control mb-2" name="body" rows="3" placeholder="My question is that..."></textarea>
+                <textarea type="text" class="form-control mb-2" name="body" rows="3"
+                          placeholder="My question is that..."></textarea>
                 <input type="submit" class="btn btn-danger w-100" value="Post Question!"/>
             </div>
         </form>
 
+        <!---GET form-->
         <form class="col-12" method="GET" action="/voting">
             <button type="submit" class="btn btn-danger w-100" onclick="location.reload()">Get Questions!</button>
         </form>
     </div>
 
-
-
     <!--All posted questions section-->
-    {% for q in questions %}
-    <div class="row pl-5 pr-5 pb-4 justify-content-center align-items-center">
-        <div class="inputGroup">
-            <button type="submit" class="btn btn-danger w-100 mb-5"> {{ q.body }}</button>
+
+
+    <div id="accordion">
+        {% for q in questions %}
+        <div class="card">
+            <div class="card-header" id="headingClone">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseClone" aria-expanded="true" aria-controls="collapseOne">
+                        Question #{{ q.num }}
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseClone" class="collapse show" aria-labelledby="headingClone" data-parent="#accordion">
+                <div class="card-body btn-dark">
+                    {{ q.body }}
+                </div>
+            </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 
 </div>
 </body>
