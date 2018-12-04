@@ -1,10 +1,8 @@
 import json
-from django.template import RequestContext
 
-from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
 from django.utils.safestring import mark_safe
@@ -14,21 +12,18 @@ from .models import Question
 
 def splash(request):
     if request.method == "GET":
-        return render(request, 'qa/splash.html', {})
+        return render(request, 'qa/splash.html')
 
     if request.method == "POST":
-        sessionID = request.POST["sessionID"]
+        sessionID = request.POST["sessionID"].lower()
         user = authenticate(username=sessionID, password="defaultuser")
 
         if user and user.is_active:
-            request.session.set_expiry(5*60)
+            request.session.set_expiry(5 * 60)
             login(request, user)
-            template = loader.get_template("qa/voting.html")
-
-            # print(request)
-            # print(rd)
-            # return HttpResponse(template.render(request))
             return render(request, 'qa/voting.html')
+        else:
+            return render(request, 'qa/splash.html', {"error": "credentials"})
 
 
 ########################################
@@ -81,9 +76,7 @@ def about(request):
 #     return HttpResponseRedirect('QA')
 
 
-
 def postQuestion(request):
-
     if request.method == "POST":
         Question(body=request.POST["body"]).save()
         # return HttpResponseRedirect("/questions")
@@ -98,7 +91,6 @@ def postQuestion(request):
     # return HttpResponseRedirect("/questions")
     # return HttpResponse(template.render(), RequestContext(request))
     # return render(request, "qa/voting.html")
-
 
 # def create_question(request):
 #     form = NewQuestionForm(data=request.POST)
