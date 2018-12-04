@@ -23,7 +23,7 @@
             </p>
             <p>
                 <b>Fetch New Questions:</b>
-                To fetch the all the questions evaluated, hit the 'Get New
+                To fetch the all the questions, press the 'Get New
                 Questions!' button below!
             </p>
         </div>
@@ -36,16 +36,19 @@
             <div class="form-group">
                 <textarea type="text" class="form-control mb-2" name="body" rows="3" placeholder="My question is that..."></textarea>
                 <input type="submit" class="btn btn-danger w-100 mb-2" value="Post Question!"/>
-                <button type="submit" class="btn btn-danger w-100">Get New Questions!</button>
+                <button type="submit" class="btn btn-danger w-100" href="voting">Get Questions!</button>
             </div>
         </form>
     </div>
 
     {% for q in questions %}
-    <div class="inputGroup">
-        <button type="submit" class="btn btn-danger w-100">{{ q }}</button>
+    <div class="row h-100 pl-5 pr-5 pb-4 justify-content-center align-items-center">
+        <div class="inputGroup">
+            <button type="submit" class="btn btn-danger w-100 mb-5"> {{ q.fields.body }}</button>
+        </div>
     </div>
     {% endfor %}
+
 
 </div>
 </body>

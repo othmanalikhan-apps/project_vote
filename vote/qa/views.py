@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
 from django.utils.safestring import mark_safe
+from django.core import serializers
 
 from .models import Question
 
@@ -28,14 +29,19 @@ def splash(request):
 
 @login_required
 def voting(request):
-    if request.method == "GET":
-        # list_of_appropriate_questions = sorted(list_of_appropriate_questions, key=lambda k: k['votes'], reverse=True)
-        approved = [q.body for q in Question.objects.get(isAppropriate=True)]
-        return render(request, 'qa/voting.html', {"questions": approved})
+
+    approved = Question.objects.filter(isAppropriate=True).order_by("votes")
+    approved = [serializers.serialize("json", approved)]
 
     if request.method == "POST":
-        Question(body=request.POST["body"]).save()
-        return render(request, 'qa/voting.html')
+        if request.POST["body"]:
+            Question(body=request.POST["body"]).save()
+        return render(request, 'qa/voting.html', {"questions": approved[0]})
+
+    # if request.method == "GET":
+    # list_of_appropriate_questions = sorted(list_of_appropriate_questions, key=lambda k: k['votes'], reverse=True)
+    # approved = Question.objects.filter(isAppropriate=True).order_by("votes")
+    # return render(request, 'qa/voting.html', {"questions": approved})
 
 
 @login_required
