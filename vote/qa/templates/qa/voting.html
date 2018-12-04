@@ -63,14 +63,16 @@
         <div class="card">
             <div class="card-header" id="headingClone">
                 <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseClone" aria-expanded="true" aria-controls="collapseOne">
+                    <button class="btn btn-outline-light" data-toggle="collapse" data-target="#collapseClone"
+                            aria-expanded="true"
+                            aria-controls="collapseOne">
                         Question #{{ q.num }}
                     </button>
                 </h5>
             </div>
 
-            <div id="collapseClone" class="collapse show" aria-labelledby="headingClone" data-parent="#accordion">
-                <div class="card-body btn-dark">
+            <div id="collapseClone" class="collapse hide" aria-labelledby="headingClone" data-parent="#accordion">
+                <div class="card-body btn-light">
                     {{ q.body }}
                 </div>
             </div>
