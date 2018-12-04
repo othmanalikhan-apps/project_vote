@@ -12,57 +12,41 @@
     {% include './components/navbar.html' %}
 
     <!--Introduction section-->
-    <div class="row justify-content-center text-justify p-5">
+    <div class="row justify-content-center text-justify pl-5 pr-5 pt-5 pb-3">
         <div class="col-12">
-            <h1 class="text-center pb-2">Q&A Voting</h1>
+            <h1 class="text-center pb-4">Q&A Voting</h1>
             <p>
-                Scroll to the bottom to post a new question. Once posted, your
+                <b>Post a Question:</b>
+                Enter your question in the box below and post! Once posted, your
                 question will be evaluated by our moderators so please wait until
                 it appears!
             </p>
             <p>
-                Otherwise, vote for an existing question by selecting the orange
-                button and hitting the vote button.
+                <b>Fetch New Questions:</b>
+                To fetch the all the questions evaluated, hit the 'Get New
+                Questions!' button below!
             </p>
         </div>
     </div>
 
     <!--Post a question section-->
     <div class="row h-100 pl-5 pr-5 pb-4 justify-content-center align-items-center">
-        <form class="col-12" method="POST" action="/new_question">
+        <form class="col-12" method="POST" action="/voting">
             {% csrf_token %}
             <div class="form-group">
                 <textarea type="text" class="form-control mb-2" name="body" rows="3" placeholder="My question is that..."></textarea>
-                <input type="submit" class="btn btn-danger w-100" value="Post Question!"/>
+                <input type="submit" class="btn btn-danger w-100 mb-2" value="Post Question!"/>
+                <button type="submit" class="btn btn-danger w-100">Get New Questions!</button>
             </div>
         </form>
     </div>
 
-    <!--Vote and Get Questions section-->
-    <div class="row pl-5 pr-5 text-center">
-        <div class="col-6">
-            <button type="submit" class="btn btn-danger w-100">Vote</button>
-        </div>
-        <div class="col-6">
-            <button type="submit" class="btn btn-danger w-100">Get Questions</button>
-        </div>
+    {% for q in questions %}
+    <div class="inputGroup">
+        <button type="submit" class="btn btn-danger w-100">{{ q }}</button>
     </div>
-
-    <!--<form class="form" action="question_voting" method="POST">-->
-        <!--{% csrf_token %}-->
-        <!--{% for question in questions %}-->
-        <!--<div class="inputGroup">-->
-            <!--<input id={{question.id}} name="checkbox" type="checkbox" value={{question.id}}>-->
-            <!--<label for={{question.id}}>{{question.body |linebreaks}}-->
-                <!--&lt;!&ndash; Tag for the AJAX part &ndash;&gt;-->
-                <!--<p id={{question.ajaxId}} value={{question.ajaxId}}>{{question.votes}}</p>-->
-            <!--</label>-->
-            <!--&lt;!&ndash; <label for={{question.id}}>{{question.body |linebreaks}} Votes: {{question.votes |linebreaks}}</p> </label> &ndash;&gt;-->
-        <!--</div>-->
-        <!--{% endfor %}-->
-    <!--</form>-->
+    {% endfor %}
 
 </div>
 </body>
 </html>
-
