@@ -36,7 +36,10 @@ def voting(request):
     if request.method == "POST":
         if request.POST["body"]:
             Question(body=request.POST["body"]).save()
-        return render(request, 'qa/voting.html', {"questions": approved[0]})
+            return render(request, 'qa/voting.html', {"question": "success"})
+        else:
+            return render(request, 'qa/voting.html')
+        # return render(request, 'qa/voting.html', {"questions": approved[0]})
 
     # if request.method == "GET":
     # list_of_appropriate_questions = sorted(list_of_appropriate_questions, key=lambda k: k['votes'], reverse=True)

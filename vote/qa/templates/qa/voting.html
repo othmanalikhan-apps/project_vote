@@ -29,9 +29,15 @@
         </div>
     </div>
 
+
     <!--Post a question section-->
     <div class="row h-100 pl-5 pr-5 pb-4 justify-content-center align-items-center">
         <form class="col-12" method="POST" action="/voting">
+            {% if question == "success" %}
+                <div class="alert alert-success" role="alert">
+                    <strong>Submitted your question to server successfully!</strong>
+                </div>
+            {% endif %}
             {% csrf_token %}
             <div class="form-group">
                 <textarea type="text" class="form-control mb-2" name="body" rows="3" placeholder="My question is that..."></textarea>
