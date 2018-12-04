@@ -1,5 +1,6 @@
 import json
 
+from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
@@ -39,9 +40,10 @@ def voting(request):
     if request.method == "POST":
         if request.POST["body"]:
             Question(body=request.POST["body"]).save()
-            return render(request, 'qa/voting.html', {"question": "success"})
+            messages.success(request, "success")
+            return HttpResponseRedirect("/voting")
         else:
-            return render(request, 'qa/voting.html')
+            return HttpResponseRedirect("/voting")
 
 
 @login_required

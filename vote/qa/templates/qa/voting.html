@@ -20,31 +20,39 @@
             </p>
             <p>
                 <b>Fetch Questions:</b>
-                To fetch the all the questions, press the <i>Get New
-                Questions!</i> button below!
+                To fetch the all the questions, press the <i>'Get Questions!'</i>
+                button below!
             </p>
         </div>
     </div>
 
     <!--Post a question section-->
     <div class="row h-100 pl-5 pr-5 pb-4 justify-content-center align-items-center">
-        <form class="col-12" method="POST" action="/voting">
 
-            {% if question == "success" %}
+        <form class="col-12 mb-0" method="POST" action="/voting">
+            {% csrf_token %}
+
+            <!---For loop needed to consume messages by Django messages framework-->
+            {% if messages %}
+                {% for m in messages %}
                 <div class="alert alert-success" role="alert">
                     <strong>Submitted your question to server successfully!</strong>
                 </div>
+                {% endfor %}
             {% endif %}
 
-            {% csrf_token %}
             <div class="form-group">
                 <textarea type="text" class="form-control mb-2" name="body" rows="3" placeholder="My question is that..."></textarea>
-                <input type="submit" class="btn btn-danger w-100 mb-2" value="Post Question!"/>
+                <input type="submit" class="btn btn-danger w-100" value="Post Question!"/>
             </div>
+        </form>
+
+        <form class="col-12" method="GET" action="/voting">
+            <button type="submit" class="btn btn-danger w-100" onclick="location.reload()">Get Questions!</button>
         </form>
     </div>
 
-    <button type="submit" class="btn btn-danger w-100" onclick="location.reload()">Get Questions!</button>
+
 
     <!--All posted questions section-->
     {% for q in questions %}
