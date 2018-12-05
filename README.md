@@ -1,15 +1,18 @@
-Project Reality: 2018 IT PDP Conference
----------------------------------------
+Project Vote: I Vote Lincoln!
+-----------------------------
 
 <br><br>
 <p align="center">
-  <img align="middle" width=400 src="assets/logo_main.png">
+  <img align="middle" width=400 src="assets/splash_1.png">
+  <img align="middle" width=400 src="assets/splash_2.png">
+  <img align="middle" width=400 src="assets/main_1.png">
+  <img align="middle" width=400 src="assets/main_2.png">
 </p>
 <br><br>
 
-Project Reality is a web application that is intended to act as the 
-conference management tool for the 2018 IT PDP conference (to be held on 21st
- November 2018 inshAllah). See the *Key Features* section below for an overview.
+Project Vote is a web application written in Django that is intended to act as 
+the conference management tool for the Town Hall event (to be held on 16th
+ December 2018 inshAllah). See the *Key Features* section below for an overview.
 
 
 Prerequisites
@@ -19,27 +22,24 @@ Prerequisites
 
 How to Run
 ----------
-Back End Code (located in `/API`):
 1. Install all the dependencies (e.g. `pip install -r requirements.txt`).
-2. Run the back end server via invoking `python manage.py runserver`.
+2. Run the django test server via invoking `python manage.py runserver`.
 3. Launch a browser and connect to the server (e.g. 127.0.0.1:8000/admin).
-
-Front End Code (located in `/website`):
-1. Execute the `index.html` and your browser will launch.
 
 
 Key Features
 ------------
-- Splash page, allows connection to a conference session.
-- Agenda page, displays the agenda of the conference.
-- Booths page, displays the floor plan of the booths.
-- Q&A session page, allows interactive posting and voting of questions. 
+- Authentication: Splash page requires a session ID
+- Q&A: Allows posting and viewing of moderated questions.
+- Moderation: Questions posted are sent to backend for moderation approval.
+- Capacity: Django development server can support around 1500 clients (though
+ it is ill advised to use the development server for production! Use Nginx 
+ with Gunicorn instead).
 
 
 Authors
 -------
 - Othman Alikhan
-- Yaqeen Mahdi
 - See About page for more details
 
 
@@ -55,5 +55,4 @@ TODO_Regular
 
 TODO
 ----
-- Add more functionality in admin page 
 - Test bootstrap being blocked internally Aramco LAN
