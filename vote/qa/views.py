@@ -21,7 +21,7 @@ def splash(request):
         user = authenticate(username=sessionID, password="defaultuser")
 
         if user and user.is_active:
-            request.session.set_expiry(5 * 60)
+            request.session.set_expiry(15 * 60)
             login(request, user)
             return HttpResponseRedirect("/voting")
         else:
