@@ -4,11 +4,10 @@ from builtins import enumerate
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
-from django.template import loader
-from django.utils.safestring import mark_safe
 from django.core import serializers
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from django.utils.safestring import mark_safe
 
 from .models import Question
 
@@ -32,13 +31,13 @@ def splash(request):
 @login_required
 def voting(request):
     if request.method == "GET":
-        _approved = Question.objects.filter(isAppropriate=True).order_by("-votes")
-        _approved = serializers.serialize("json", _approved)
-        _approved = [entry["fields"] for entry in json.loads(_approved)]
-        _approved = _approved[:20]
-
         approved = []
-        for i, entry in enumerate(_approved, start=1):
+        qs = Question.objects.filter(isAppropriate=True).order_by("-votes")
+        qs = serializers.serialize("json", qs)
+        qs = [entry["fields"] for entry in json.loads(qs)]
+        qs = qs[:20]
+
+        for i, entry in enumerate(qs, start=1):
             entry.pop("isAppropriate")
             entry["num"] = i
             approved.append(entry)
@@ -56,9 +55,11 @@ def voting(request):
 
 @login_required
 def about(request):
-    template = loader.get_template("qa/about.html")
-    return HttpResponse(template.render())
+    return render(request, 'qa/about.html')
 
+
+def stress(request):
+    return render(request, 'qa/loaderio.html')
 
 ######################################## DJANGO CHANNELS
 
