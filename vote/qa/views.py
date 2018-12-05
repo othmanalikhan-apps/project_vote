@@ -47,7 +47,7 @@ def voting(request):
     if request.method == "POST":
         if request.POST["body"]:
             Question(body=request.POST["body"]).save()
-            msg = "Submitted your question to server successfully!"
+            msg = "Submitted your question to the server successfully!"
             messages.success(request, msg)
             return HttpResponseRedirect("/voting")
         else:
@@ -61,8 +61,6 @@ def about(request):
 
 def stress(request):
     return render(request, 'qa/loaderio.html')
-
-######################################## DJANGO CHANNELS
 
 
 def index(request):

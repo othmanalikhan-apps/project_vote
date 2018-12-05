@@ -126,9 +126,3 @@ STATIC_URL = '/static/'
 
 LOGIN_URL = "/"
 LOGIN_REDIRECT_URL = "/questions"
-
-# Alert messages (django messages framework) on Chrome doesn't work with
-# cookies only!
-# The messages are stored in cookies but when they are being looped in the
-# HTML template, they are deleted (they should) but without rendering!
-MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
