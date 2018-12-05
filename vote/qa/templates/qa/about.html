@@ -6,40 +6,51 @@
 <body>
 <div id="container h-100">
 
-    <div class="row h-100 justify-content-center align-items-center">
-        <h1 class="subtitle">Development</h1>
-        <p>
-            A good deal of effort has gone into the development of this web
-            application, be it directly or indirectly. Credit goes to everyone
-            who has helped bring this project into reality.
-        </p>
-        <p>
-            In addition, the development of this web application involved the
-            use of several lovely technologies that deserve mentioning.
-        </p>
+    {% include './components/navbar.html' %}
 
-        <!--<h1 class="subtitle">Credits </h1>-->
-        <p class="credits">
-            <b>Authors</b><br>Othman Alikhan<br>Yaqeen AlMahdi<br><br>
+    <div class="row h-100 justify-content-center align-items-center p-5">
 
-            <b>Icon Distributor</b><br>www.thenounproject.com<br><br>
+        <div class="col-12 text-justify">
+            <h1 class="text-center pb-4">Development</h1>
+            <p>
+                A good deal of effort has gone into the development of this web
+                application, be it directly or indirectly. Credit goes to everyone
+                who has helped bring this project into reality.
+            </p>
+            <p>
+                In addition, the development of this web application involved the
+                use of several lovely technologies that deserve mentioning.
+            </p>
+        </div>
 
-            <b>Icons</b>
-            <br>'Home' by Prime Icons
-            <br>'Q&A' by Andrien Coquet
-            <br>'About' by Dmitriy Ivanov
-            <br>'Hamburger' by Alex Podolsky
-            <br>'Liked' by Sophia Bai<br><br>
+        <div class="col-12 text-justify text-center">
+            <h1 class="pt-4 pb-3">Credits</h1>
 
-            <b>Languages</b><br>Python<br>Javascript (Ajax)<br><br>
-            <b>Framework</b><br>Django<br><br>
-            <b>Version Control</b><br>Git/Github<br><br>
-            <b>Hosting</b><br>DigitalOcean<br><br>
+            <h5 class="m-0">Author</h5>
+            Othman Alikhan<br>
 
-            <b>Special Thanks</b><br>Omar Alikhan<br><br>
-        </p>
-    </div>
+            <h5 class="pt-4">Beta Testers</h5>
+            Abdullah AlAqeel<br>
+            Nawaf AlDossary<br>
+            Mohammad Tabaib<br>
+            Hanan Ali<br>
 
-</div>
+            <h5 class="pt-4">Languages</h5>
+            Python<br>
+
+            <b></b>
+            <h5 class="pt-4">Framework</h5>
+            Django<br>
+
+            <h5 class="pt-4">Version Control</h5>
+            Git/Github<br>
+
+            <h5 class="pt-4">Hosting</h5>
+            DigitalOcean<br>
+
+            <h5 class="pt-4">Special Thanks</h5>
+            Omar Alikhan<br>
+            Yaqeen AlMahdi<br>
+        </div>
 </body>
 </html>
