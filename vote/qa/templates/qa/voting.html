@@ -33,14 +33,7 @@
         <form class="col-12 mb-0" method="POST" action="/voting">
             {% csrf_token %}
 
-            <!---For loop needed to consume messages by Django messages framework-->
-            {% if messages %}
-                {% for m in messages %}
-                    <div class="alert alert-success" role="alert">
-                        <strong>Submitted your question to server successfully!</strong>
-                    </div>
-                {% endfor %}
-            {% endif %}
+            {% include './components/messages.html' %}
 
             <div class="form-group">
                 <textarea type="text" class="form-control mb-2" name="body" rows="3"

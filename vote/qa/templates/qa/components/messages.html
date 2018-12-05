@@ -1,0 +1,8 @@
+<!---For loop needed to consume messages by Django messages framework-->
+{% if messages %}
+    {% for m in messages %}
+        <div class="alert alert-success" role="alert">
+            <strong>{{ m }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}

@@ -47,7 +47,8 @@ def voting(request):
     if request.method == "POST":
         if request.POST["body"]:
             Question(body=request.POST["body"]).save()
-            messages.success(request, "success")
+            msg = "Submitted your question to server successfully!"
+            messages.success(request, msg)
             return HttpResponseRedirect("/voting")
         else:
             return HttpResponseRedirect("/voting")
