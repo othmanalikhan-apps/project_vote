@@ -31,7 +31,6 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
-    'channels',
     'qa',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -72,18 +71,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'vote.wsgi.application'
-
-ASGI_APPLICATION = 'vote.routing.application'
-
-# Channels (Bypasses database storage so this layer is not needed!)
-# CHANNEL_LAYERS = {
-#     'default': {
-#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
-#         'CONFIG': {
-#             "hosts": [('127.0.0.1', 6379)],
-#         },
-#     },
-# }
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
