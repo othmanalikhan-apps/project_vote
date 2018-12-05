@@ -1,15 +1,5 @@
 /*!**********************************GLOBAL CSS**********************************!*/
 
-/*!* Reference *!*/
-/*ColorPalette {*/
-    /*color: #ff7b0f,*/
-    /*#ffaa0c,*/
-    /*#4e9894,*/
-    /*#5e7777,*/
-    /*#efe1b8,*/
-    /*#77918E;*/
-/*}*/
-
 html {
     height: 100%;
     width: 100%;
@@ -30,6 +20,6 @@ h1 {
     text-shadow: 1px 1px black;
 }
 
-div#headingClone {
+div.questionsButton {
     background: #343a40 !important;
 }
