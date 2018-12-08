@@ -52,8 +52,10 @@
     <!--All posted questions section-->
     <div id="accordion" class="col-12 p-0 m-0">
 
+
         <!--Button to expand all question-->
         <div class="card row">
+
             <div class="card-header questionsButton" id="heading">
                 <h5 class="mb-0">
                     <button class="btn btn-outline-light btn-block" data-toggle="collapse"
@@ -68,9 +70,9 @@
 
         {% for q in questions %}
             <div class="card row">
-                <!--Button to expand a single question-->
 
                 {% if q.isAnswered %}
+                    <!--Button to expand a single question (answered)-->
                     <div class="card-header questionsButton" id="heading{{ q.num }}">
                         <h5 class="mb-0">
                             <button class="btn btn-light btn-block" data-toggle="collapse"
@@ -82,6 +84,7 @@
                         </h5>
                     </div>
                 {% else %}
+                    <!--Button to expand a single question-->
                     <div class="card-header questionsButton" id="heading{{ q.num }}">
                         <h5 class="mb-0">
                             <button class="btn btn-outline-light btn-block" data-toggle="collapse"
@@ -93,16 +96,18 @@
                         </h5>
                     </div>
                 {% endif %}
-            </div>
 
-            <!--Content expanded-->
-            <div id="collapse{{ q.num }}" class="collapse multi-collapse" aria-labelledby="heading{{ q.num }}">
-                <div class="card-body btn-light">
-                    {{ q.body }}
+                <!--Content expanded-->
+                <div id="collapse{{ q.num }}" class="collapse multi-collapse" aria-labelledby="heading{{ q.num }}">
+                    <div class="card-body btn-light">
+                        {{ q.body }}
+                    </div>
                 </div>
             </div>
-            </div>
         {% endfor %}
+
+    </div>
+
 </div>
 </body>
 </html>
