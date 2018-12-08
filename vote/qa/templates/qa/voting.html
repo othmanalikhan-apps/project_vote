@@ -4,12 +4,13 @@
 {% include './components/_head.html' %}
 
 <body>
-<div id="container h-100">
 
-    {% include './components/navbar.html' %}
+{% include './components/navbar.html' %}
+
+<div class="container">
 
     <!--Introduction section-->
-    <div class="row justify-content-center text-justify pl-5 pr-5 pt-5 pb-3">
+    <div class="row justify-content-center text-justify pl-4 pr-4 pt-5 pb-3">
         <div class="col-12">
             <h1 class="text-center pb-4">Q&A Voting</h1>
             <p>
@@ -27,7 +28,7 @@
     </div>
 
     <!--Post a question section-->
-    <div class="row h-100 pl-5 pr-5 pb-4 justify-content-center align-items-center">
+    <div class="row pl-4 pr-4 pb-4 justify-content-center align-items-center">
 
         <!---POST form-->
         <form class="col-12 mb-0" method="POST" action="/voting">
@@ -49,22 +50,25 @@
     </div>
 
     <!--All posted questions section-->
-    <div id="accordion">
+    <div id="accordion" class="col-12 p-0 m-0">
+
 
         <!--Button to expand all question-->
-        <div class="card-header questionsButton" id="heading">
-            <h5 class="mb-0">
-                <button class="btn btn-outline-light btn-block" data-toggle="collapse"
-                        data-target=".multi-collapse"
-                        aria-expanded="false"
-                        aria-controls=".multi-collapse">
-                    Expand All Fetched Questions
-                </button>
-            </h5>
+        <div class="card row">
+            <div class="card-header questionsButton" id="heading">
+                <h5 class="mb-0">
+                    <button class="btn btn-outline-light btn-block" data-toggle="collapse"
+                            data-target=".multi-collapse"
+                            aria-expanded="false"
+                            aria-controls=".multi-collapse">
+                        Expand All Fetched Questions
+                    </button>
+                </h5>
+            </div>
         </div>
 
         {% for q in questions %}
-            <div class="card">
+            <div class="card row">
                 <!--Button to expand a single question-->
                 <div class="card-header questionsButton" id="heading{{ q.num }}">
                     <h5 class="mb-0">
