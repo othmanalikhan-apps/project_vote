@@ -1,6 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="position: relative">
 
-    <a class="navbar-brand" href="#">Q&A</a>
+    {% if request.path  == "/voting" %}
+        <a class="navbar-brand" href="#"> Q&A </a>
+    {% endif %}
+
+    {% if request.path  == "/about" %}
+        <a class="navbar-brand" href="#"> About </a>
+    {% endif %}
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
