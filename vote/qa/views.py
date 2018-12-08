@@ -35,7 +35,7 @@ def voting(request):
         qs = Question.objects.filter(isAppropriate=True).order_by("-votes")
         qs = serializers.serialize("json", qs)
         qs = [entry["fields"] for entry in json.loads(qs)]
-        qs = qs[:20]
+        qs = qs[:40]
 
         for i, entry in enumerate(qs, start=1):
             entry.pop("isAppropriate")
