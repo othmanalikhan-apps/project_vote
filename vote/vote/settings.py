@@ -127,5 +127,21 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+# Custom settings
+
 LOGIN_URL = "/"
 LOGIN_REDIRECT_URL = "/questions"
+
+# Security settings
+
+X_FRAME_OPTIONS = "DENY"
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+
+# Requires SSL certificate
+# SECURE_SSL_REDIRECT = True
+# PREPEND_WWW = True
+# BASE_URL = "https://www.2018townhall.com"
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
