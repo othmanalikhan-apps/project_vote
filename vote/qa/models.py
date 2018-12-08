@@ -8,6 +8,7 @@ class Question(models.Model):
     body = models.TextField(default='')
     votes = models.IntegerField(default=0)
     isAppropriate = models.BooleanField(default=False)
+    isAnswered = models.BooleanField(default=False)
 
     def __str__(self):
         return self.body

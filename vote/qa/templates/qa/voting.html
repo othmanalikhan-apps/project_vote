@@ -55,6 +55,7 @@
 
         <!--Button to expand all question-->
         <div class="card row">
+
             <div class="card-header questionsButton" id="heading">
                 <h5 class="mb-0">
                     <button class="btn btn-outline-light btn-block" data-toggle="collapse"
@@ -69,28 +70,41 @@
 
         {% for q in questions %}
             <div class="card row">
-                <!--Button to expand a single question-->
+            <!--Button to expand a single question-->
+
+            {% if q.isAnswered %}
                 <div class="card-header questionsButton" id="heading{{ q.num }}">
-                    <h5 class="mb-0">
-                        <button class="btn btn-outline-light btn-block" data-toggle="collapse"
-                                data-target="#collapse{{ q.num }}"
-                                aria-expanded="false"
-                                aria-controls="collapse{{ q.num }}">
-                            Question #{{ q.num }}
-                        </button>
-                    </h5>
-                </div>
+                <h5 class="mb-0">
+                    <button class="btn btn-light btn-block" data-toggle="collapse"
+                            data-target="#collapse{{ q.num }}"
+                            aria-expanded="false"
+                            aria-controls="collapse{{ q.num }}">
+                        Question #{{ q.num }} (Answered)
+                    </button>
+                </h5>
+            {% else %}
+                <div class="card-header questionsButton" id="heading{{ q.num }}">
+                <h5 class="mb-0">
+                    <button class="btn btn-outline-light btn-block" data-toggle="collapse"
+                            data-target="#collapse{{ q.num }}"
+                            aria-expanded="false"
+                            aria-controls="collapse{{ q.num }}">
+                        Question #{{ q.num }}
+                    </button>
+                </h5>
+            {% endif %}
+        </div>
 
-                <!--Content expanded-->
-                <div id="collapse{{ q.num }}" class="collapse multi-collapse" aria-labelledby="heading{{ q.num }}">
-                    <div class="card-body btn-light">
-                        {{ q.body }}
-                    </div>
-                </div>
+        <!--Content expanded-->
+        <div id="collapse{{ q.num }}" class="collapse multi-collapse" aria-labelledby="heading{{ q.num }}">
+            <div class="card-body btn-light">
+                {{ q.body }}
             </div>
+        </div>
+        </div>
         {% endfor %}
-    </div>
+        </div>
 
-</div>
+    </div>
 </body>
 </html>

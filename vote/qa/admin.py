@@ -27,7 +27,7 @@ class ExportCSV:
 @admin.register(models.Question)
 class QuestionAdmin(admin.ModelAdmin, ExportCSV):
     actions = ["exportCSV"]
-    list_display = ("body", "votes", "isAppropriate")
-    list_editable = ("votes", "isAppropriate")
-    ordering = ["-isAppropriate", "-votes"]
+    list_display = ("body", "votes", "isAppropriate", "isAnswered")
+    list_editable = ("votes", "isAppropriate", "isAnswered")
+    ordering = ["-isAppropriate", "-votes", "isAnswered"]
     list_per_page = 10
