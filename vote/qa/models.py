@@ -9,6 +9,7 @@ class Question(models.Model):
     votes = models.IntegerField(default=0)
     isAppropriate = models.BooleanField(default=False)
     isAnswered = models.BooleanField(default=False)
+    timeStamp = models.TimeField(auto_now_add=True)
 
     def __str__(self):
         return self.body
