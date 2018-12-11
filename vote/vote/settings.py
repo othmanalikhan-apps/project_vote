@@ -138,6 +138,7 @@ LOGIN_REDIRECT_URL = "/questions"
 X_FRAME_OPTIONS = "DENY"
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
+PASSWORD_HASHERS = ('django.contrib.auth.hashers.UnsaltedSHA1PasswordHasher',)
 
 # Requires SSL certificate
 # SECURE_SSL_REDIRECT = True
