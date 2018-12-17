@@ -60,14 +60,7 @@ def about(request):
 
 
 def stress(request):
+    """
+    Points to a file required for stress testing via loader.io website.
+    """
     return render(request, 'qa/loaderio.html')
-
-
-def index(request):
-    return render(request, 'qa/index.html', {})
-
-
-def room(request, room_name):
-    return render(request, 'qa/room.html', {
-        'room_name_json': mark_safe(json.dumps(room_name))
-    })
