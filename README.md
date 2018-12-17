@@ -1,14 +1,11 @@
 Project Vote: I Vote Lincoln!
 -----------------------------
-
-<br><br>
-<p align="center">
-  <img align="middle" width=400 src="assets/splash_1.png">
-  <img align="middle" width=400 src="assets/splash_2.png">
-  <img align="middle" width=400 src="assets/main_1.png">
-  <img align="middle" width=400 src="assets/main_2.png">
+<p>
+  <img align="middle" width=200 src="assets/splash_1.png">
+  <img align="middle" width=200 src="assets/splash_2.png">
+  <img align="middle" width=200 src="assets/main_1.png">
+  <img align="middle" width=200 src="assets/main_2.png">
 </p>
-<br><br>
 
 Project Vote is a web application written in Django that is intended to act as 
 the conference management tool for the Town Hall event (to be held on 16th
@@ -56,3 +53,4 @@ TODO_Regular
 TODO
 ----
 - Test bootstrap being blocked internally Aramco LAN
+
