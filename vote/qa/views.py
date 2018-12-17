@@ -7,8 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.core import serializers
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.utils.safestring import mark_safe
 
+from vote.settings import LOGIN_PASSWORD
 from .models import Question
 
 
@@ -17,8 +17,8 @@ def splash(request):
         return render(request, 'qa/splash.html')
 
     if request.method == "POST":
-        sessionID = request.POST["sessionID"].lower()
-        user = authenticate(username=sessionID, password="defaultuser")
+        sessionID = request.POST["sessionID"]
+        user = authenticate(username=sessionID, password=LOGIN_PASSWORD)
 
         if user and user.is_active:
             request.session.set_expiry(15 * 60)
