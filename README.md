@@ -7,14 +7,19 @@ Project Vote: I Vote Lincoln!
   <img align="middle" width=200 src="assets/main_2.png">
 </p>
 
-Project Vote is a web application written in Django that is intended to act as 
-the conference management tool for the Town Hall event (to be held on 16th
- December 2018 inshAllah). See the *Key Features* section below for an overview.
+
+Project Vote is a web application written in Django that was used as the 
+realtime Q&A tool for a company wide event named "Town Hall". This
+event took place on 16th December 2018 and with an audience of 3,000 people.
+See the [Key Features](#Key-Features) section below for an overview.
 
 
 Prerequisites
 -------------
 - Python 3+ (see requirements.txt file)
+- Django 2.1.4+
+- Gunicorn 19.9.0 (only for deployment)
+- Nginx 1.14.2+ (only for deployment)
 
 
 How to Run
@@ -29,28 +34,18 @@ Key Features
 - Authentication: Splash page requires a session ID
 - Q&A: Allows posting and viewing of moderated questions.
 - Moderation: Questions posted are sent to backend for moderation approval.
-- Capacity: Django development server can support around 1500 clients (though
- it is ill advised to use the development server for production! Use Nginx 
- with Gunicorn instead).
+- Capacity: ~2,000 clients. 
+
+Note: The bottleneck of the web application is the authentication page which 
+can only support 2,000 HTTP requests within 1 minute (tested with Gunicorn
+and Nginx). Other pages support more than 10,000 HTTP requests per minute.
+
+As a reference, the django development server can support around 1500 clients 
+(though it is ill advised to use the development server for production! Use 
+Nginx with Gunicorn instead).
 
 
 Authors
 -------
 - Othman Alikhan
-- See About page for more details
-
-
-TODO_Critical
--------------
-- Stress test remote development server
-- Deploy Django App on a production web server (do not use manage.py!)
-
-TODO_Regular
-------------
-- Improve security on production server
-- Get an SSL certificate
-
-TODO
-----
-- Test bootstrap being blocked internally Aramco LAN
-
+- See About page for more details.
