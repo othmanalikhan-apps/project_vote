@@ -11,6 +11,8 @@ from django.shortcuts import render
 from vote.settings import LOGIN_PASSWORD
 from .models import Question
 
+SESSION_EXPIRE = 15 * 60    # 15 minutes
+
 
 def splash(request):
     if request.method == "GET":
@@ -21,7 +23,7 @@ def splash(request):
         user = authenticate(username=sessionID, password=LOGIN_PASSWORD)
 
         if user and user.is_active:
-            request.session.set_expiry(15 * 60)
+            request.session.set_expiry(SESSION_EXPIRE)
             login(request, user)
             return HttpResponseRedirect("/voting")
         else:
