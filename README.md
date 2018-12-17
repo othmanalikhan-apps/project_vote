@@ -31,10 +31,10 @@ How to Run
 
 Key Features
 ------------
-- Authentication: Splash page requires a session ID
-- Q&A: Allows posting and viewing of moderated questions.
-- Moderation: Questions posted are sent to backend for moderation approval.
-- Capacity: ~2,000 clients. 
+- **Authentication:** Requires logging via session ID.
+- **Realtime Q&A:** Allows posting and viewing of moderated questions.
+- **Moderation:** Questions posted are sent to backend for moderation first.
+- **Capacity:** ~2,000 clients. 
 
 Note: The bottleneck of the web application is the authentication page which 
 can only support 2,000 HTTP requests within 1 minute (tested with Gunicorn
