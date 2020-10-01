@@ -2,9 +2,9 @@ Project Vote: I Vote Lincoln!
 -----------------------------
 <p>
   <img align="middle" width=200 src="assets/splash_1.png">
-  <img align="middle" width=200 src="assets/splash_2.png">
   <img align="middle" width=200 src="assets/main_1.png">
   <img align="middle" width=200 src="assets/main_2.png">
+  <img align="middle" width=200 src="assets/backend_1.png">
 </p>
 
 Project Vote is a web application written with Django that was used as the 
