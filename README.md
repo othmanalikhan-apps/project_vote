@@ -27,21 +27,23 @@ How to Run (Development)
 2. Run the django development server via `cd vote && python manage.py runserver`.
 3. Launch a browser and connect to the server (e.g. 127.0.0.1:8000).
 4. To get past the login page, create a new session ID by creating a new user account in the backend.
-    `python manage.py migrate`
-    `python manage.py createsuperuser`      # IMPORTANT: Username=<SESSION_ID>, password=defaultuser
+   Note: The username will be the session ID, while the password is currently is hardcoded to 'defaultuser'
+   (the password is not used, only the session ID!)
+   - `python manage.py migrate`
+   - `python manage.py createsuperuser`      `# IMPORTANT: Username=<SESSION_ID>, password=defaultuser`
 
 
 Q&A Flow
 --------
-    1. A user logs into the frontend webpage via a given session ID.
-    2. The user can view existing questions.
-    3. The user can post a new question if not already asked.
-    4. The submitted question is first sent to the backend.
-    5. Moderators access the backend via <URL>/admin.
-    6. The moderator can control the following flags per question:
-       `isAppropriate` flag: Appear on frontend?
-       `isAnswered` flag: Change question color to green on frontend?
-       `votes`:  An internal ranking of questions to help moderation.
+  1. A user logs into the frontend webpage via a given session ID.
+  2. The user can view existing questions.
+  3. The user can post a new question if not already asked.
+  4. The submitted question is first sent to the backend.
+  5. Moderators access the backend via <URL>/admin.
+  6. The moderator can control the following flags per question:
+     - `isAppropriate` flag: Appear on frontend?
+     - `isAnswered` flag: Change question color to green on frontend?
+     - `votes`:  An internal ranking of questions to help moderation.
                
 
 Key Features
